@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#104f43" />
+  <title>PRIVATE CARAVAN RESORT | 멤버십 문의</title>
+  <style>
+    :root{
+      --green:#104f43;
+      --green2:#0c443a;
+      --mint:#d6ead8;
+      --lime:#9dff9e;
+      --beige:#c5a27f;
+      --text:#123f36;
+      --shadow:0 22px 70px rgba(0,0,0,.26);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--green)}
+    body{margin:0;background:var(--green);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;color:#fff}
+    button,input,select{font:inherit}
+    .page{width:min(100%,860px);margin:0 auto;box-shadow:0 0 50px rgba(0,0,0,.14);background:var(--green);overflow:hidden}
+    .panel{position:relative;line-height:0}
+    .panel img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+    .hotspot{position:absolute;border:0;background:transparent;cursor:pointer;z-index:3;border-radius:10px;line-height:normal}
+    .hotspot:focus-visible{outline:3px solid #fff;outline-offset:2px;background:rgba(255,255,255,.08)}
+    .hotspot.first{left:24%;top:88.0%;width:52%;height:7.0%}
+    .hotspot.third{left:24%;top:85.0%;width:54%;height:8.8%}
+    .hotspot.formarea{left:18%;top:13%;width:66%;height:48%}
+    .floating-cta{position:fixed;top:18px;right:18px;z-index:20;border:0;border-radius:999px;background:var(--beige);color:white;font-weight:800;padding:13px 21px;box-shadow:0 10px 28px rgba(0,0,0,.22);cursor:pointer;letter-spacing:-.03em}
+    .floating-cta:hover{filter:brightness(.98)}
+    .faq-section{background:var(--green);padding:92px 8.5% 96px}
+    .faq-section h2{margin:0 0 42px;text-align:center;color:#fff;font-family:"Noto Serif KR","Batang",serif;font-size:48px;font-weight:600;letter-spacing:-.06em}
+    .faq-list{display:grid;gap:16px}
+    .faq-item{overflow:hidden;background:#fff}
+    .faq-q{width:100%;border:0;background:#a8cdbb;color:#0d493e;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;padding:20px 24px;font-size:21px;font-weight:800;line-height:1.35;cursor:pointer;letter-spacing:-.035em}
+    .faq-q strong{font-size:25px;margin-right:7px}
+    .faq-icon{font-size:28px;font-weight:400;line-height:1;transition:transform .2s ease}
+    .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+    .faq-a>div{overflow:hidden;color:#244f46;font-size:19px;line-height:1.65;letter-spacing:-.025em}
+    .faq-item.open .faq-a{grid-template-rows:1fr}
+    .faq-item.open .faq-a>div{padding:22px 28px 24px}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .final-cta{background:var(--green);text-align:center}
+    .final-cta-copy{padding:80px 24px 54px}
+    .final-cta-copy h2{margin:0 0 14px;font-family:"Noto Serif KR","Batang",serif;font-size:52px;font-weight:600;letter-spacing:-.06em}
+    .final-cta-copy p{margin:0 0 30px;color:#cfe1d9;font-size:17px;line-height:1.6}
+    .final-cta-btn{width:min(100%,520px);height:72px;border:0;background:var(--beige);color:#fff;font-family:"Noto Serif KR","Batang",serif;font-size:28px;font-weight:700;cursor:pointer}
+    .final-cta img{display:block;width:100%;height:auto}
+    .mobile-cta{display:none}
+    .modal-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;padding:18px}
+    .modal-backdrop.open{display:flex}
+    .modal{width:min(100%,500px);max-height:calc(100vh - 36px);overflow:auto;background:#fff;color:var(--text);border-radius:24px;box-shadow:var(--shadow);padding:28px;position:relative}
+    .modal h2{margin:2px 44px 8px 0;font-size:30px;letter-spacing:-.055em;color:var(--green)}
+    .modal p{margin:0 0 24px;color:#527069;line-height:1.55;font-size:14px}
+    .close{position:absolute;right:18px;top:16px;width:38px;height:38px;border:0;border-radius:50%;background:#eef4ef;color:var(--green);font-size:25px;line-height:38px;cursor:pointer}
+    .field{margin:0 0 16px}
+    .field label{display:block;font-size:15px;font-weight:800;margin:0 0 8px;color:var(--text)}
+    .field input,.field select{width:100%;height:52px;border:1px solid #c9d8d0;border-radius:12px;background:#fff;color:#183f37;padding:0 14px;outline:none}
+    .field input:focus,.field select:focus{border-color:#4c8c79;box-shadow:0 0 0 3px rgba(76,140,121,.12)}
+    .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px;color:#385c54;font-size:13px;line-height:1.5}
+    .consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--green)}
+    .submit{width:100%;height:58px;border:0;border-radius:13px;background:var(--beige);color:#fff;font-size:20px;font-weight:900;cursor:pointer;letter-spacing:-.04em}
+    .submit:disabled{opacity:.65;cursor:wait}
+    .fine{font-size:11px!important;color:#82958f!important;margin:12px 0 0!important;line-height:1.45!important}
+    .success-card{width:min(100%,430px);background:#fff;color:var(--text);border-radius:22px;padding:32px 26px;text-align:center;box-shadow:var(--shadow)}
+    .success-icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;background:#e2f2e4;color:var(--green);font-size:28px;font-weight:900}
+    .success-card h3{margin:0 0 9px;font-size:24px;letter-spacing:-.045em;color:var(--green)}
+    .success-card p{margin:0 0 22px;color:#5d746e;line-height:1.5}
+    .ok{border:0;border-radius:12px;background:var(--green);color:white;font-weight:800;padding:12px 30px;cursor:pointer}
+    @media (max-width:900px){.floating-cta{top:12px;right:12px;padding:11px 17px;font-size:14px}}
+    @media (max-width:620px){
+      body{padding-bottom:74px}
+      .page{box-shadow:none}
+      .floating-cta{display:block}
+      .mobile-cta{display:block;position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:30;height:54px;border:0;border-radius:14px;background:var(--beige);color:white;font-weight:900;font-size:18px;box-shadow:0 10px 30px rgba(0,0,0,.28);cursor:pointer}
+      .faq-section{padding:58px 5.5% 64px}
+      .faq-section h2{font-size:36px;margin-bottom:28px}
+      .faq-q{padding:17px 16px;font-size:16px}
+      .faq-q strong{font-size:19px}
+      .faq-icon{font-size:23px}
+      .faq-a>div{font-size:15px}
+      .faq-item.open .faq-a>div{padding:18px 18px 20px}
+      .final-cta-copy{padding:56px 20px 38px}
+      .final-cta-copy h2{font-size:38px}
+      .final-cta-copy p{font-size:14px;margin-bottom:24px}
+      .final-cta-btn{height:60px;font-size:23px}
+      .modal{border-radius:20px;padding:24px 20px}
+      .modal h2{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <button class="floating-cta js-open" type="button">문의하기</button>
+
+  <main class="page" aria-label="프라이빗 카라반 리조트 멤버십 안내">
+    <section class="panel">
+      <img src="assets/section01.png" alt="혹시 아직도 숙박비 내고 여행가시나요?" />
+    </section>
+    <section class="panel"><img src="assets/section02.png" alt="성수기 숙박 가격 안내" /></section>
+    <section class="panel">
+      <img src="assets/section03.png" alt="멤버십 가입 조건과 가입금 반환 안내" />
+    </section>
+    <section class="panel"><img src="assets/section04.png" alt="추가요금 없이 제공되는 혜택 안내" /></section>
+    <section class="panel"><img src="assets/section05.png" alt="추가비용 제로 안내" /></section>
+    <section class="faq-section" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">자주 묻는 질문</h2>
+      <div class="faq-list">
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 성수기도 추가 비용 없이 이용할 수 있나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>네, 성수기에도 별도의 할증 없이 이용 가능하나 선착순 예약으로 희망 날짜가 조기 마감될 수 있습니다.</div></div></article>
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 이용 횟수를 모두 사용하지 못하면 어떻게 되나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>기간 내 사용하지 않은 횟수는 소멸되지만, 회원님께서 예약하시면 가족이나 지인도 편리하게 이용 가능합니다.</div></div></article>
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 몇 명까지 이용할 수 있나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>멤버십 회원이라면 추가 요금 없이 최대 4인까지 자유롭게 이용하실 수 있습니다.</div></div></article>
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 예약은 어떻게 하나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>회원 전용 예약 창구 또는 멤버십 담당자에게 희망 날짜와 지점을 알려주시면 예약을 도와드립니다.</div></div></article>
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 가입금은 언제 반환되나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>가입금은 계약 기간 종료 후 계약서에 명시된 날짜에 반환해 드립니다.</div></div></article>
+        <article class="faq-item"><button class="faq-q" type="button" aria-expanded="false"><span><strong>Q.</strong> 전 지점에서 이용할 수 있나요?</span><span class="faq-icon">＋</span></button><div class="faq-a"><div>스타로드 1호점, 2호점에서 자유롭게 이용 가능합니다.</div></div></article>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-cta-copy">
+        <h2>가입 안내 받기</h2>
+        <p>궁금한 점을 남겨주시면 확인 후 상담을 도와드립니다.</p>
+        <button class="final-cta-btn js-open" type="button">문의하기</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="formModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close" id="closeModal" type="button" aria-label="닫기">×</button>
+      <h2 id="modalTitle">가입 안내 받기</h2>
+      <p>아래 정보를 남겨주시면 확인 후 상담을 도와드립니다.</p>
+      <form id="leadForm">
+        <div class="field">
+          <label for="name">이름(필수)</label>
+          <input id="name" name="name" type="text" autocomplete="name" maxlength="30" required />
+        </div>
+        <div class="field">
+          <label for="phone">전화번호(필수)</label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" maxlength="13" required />
+        </div>
+        <div class="field">
+          <label for="consultTime">상담 가능 시간</label>
+          <select id="consultTime" name="consultTime">
+            <option value="시간 무관">시간 무관</option>
+            <option value="오전 9시~12시">오전 9시~12시</option>
+            <option value="오후 12시~3시">오후 12시~3시</option>
+            <option value="오후 3시~6시">오후 3시~6시</option>
+            <option value="오후 6시 이후">오후 6시 이후</option>
+          </select>
+        </div>
+        <label class="consent">
+          <input id="agree" name="agreement" type="checkbox" value="동의" required />
+          <span>개인정보 수집·이용에 동의합니다. 상담 목적의 연락을 위해 이름과 전화번호를 수집합니다.</span>
+        </label>
+        <input type="hidden" id="regionCompat" name="region" value="시간 무관" />
+        <input type="hidden" name="page" value="숙박 멤버십 랜딩페이지" />
+        <input type="hidden" name="source" id="sourceField" value="direct" />
+        <button class="submit" id="submitBtn" type="submit">문의하기</button>
+        <p class="fine">문의 제출 시 입력한 정보는 상담 연락을 위한 용도로만 사용됩니다.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h3 id="successTitle">문의가 접수되었습니다.</h3>
+      <p>확인 후 연락드리겠습니다.</p>
+      <button class="ok" id="successOk" type="button">확인</button>
+    </div>
+  </div>
+
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzHuGsR_Yjal5xjR41AWi7ATcGadU49iAEPe-T_vs0TsFV6hPhOtuKr0xMOu5cxYQqG/exec';
+    const modal = document.getElementById('formModal');
+    const successModal = document.getElementById('successModal');
+    const form = document.getElementById('leadForm');
+    const phone = document.getElementById('phone');
+    const consultTime = document.getElementById('consultTime');
+    const regionCompat = document.getElementById('regionCompat');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function getSource(){
+      const p = new URLSearchParams(location.search);
+      return p.get('utm_source') || p.get('source') || document.referrer || 'direct';
+    }
+    document.getElementById('sourceField').value = getSource();
+
+    function openModal(){
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('name').focus(), 50);
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.js-open').forEach(el => el.addEventListener('click', openModal));
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeModal(); successModal.classList.remove('open'); document.body.style.overflow=''; } });
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const willOpen = !item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        });
+        if(willOpen){
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+
+    phone.addEventListener('input', () => {
+      const n = phone.value.replace(/\D/g,'').slice(0,11);
+      if(n.length < 4) phone.value = n;
+      else if(n.length < 8) phone.value = `${n.slice(0,3)}-${n.slice(3)}`;
+      else phone.value = `${n.slice(0,3)}-${n.slice(3,7)}-${n.slice(7)}`;
+    });
+    consultTime.addEventListener('change', () => { regionCompat.value = consultTime.value; });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if(!form.reportValidity()) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송 중...';
+      regionCompat.value = consultTime.value;
+      const data = new FormData(form);
+      data.append('submittedAt', new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}));
+      try{
+        await fetch(ENDPOINT, { method:'POST', body:data, mode:'no-cors' });
+        form.reset();
+        consultTime.value = '시간 무관';
+        regionCompat.value = '시간 무관';
+        document.getElementById('sourceField').value = getSource();
+        closeModal();
+        successModal.classList.add('open');
+        document.body.style.overflow='hidden';
+      } catch(err){
+        alert('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '문의하기';
+      }
+    });
+
+    document.getElementById('successOk').addEventListener('click', () => {
+      successModal.classList.remove('open');
+      document.body.style.overflow='';
+    });
+    successModal.addEventListener('click', e => { if(e.target === successModal){ successModal.classList.remove('open'); document.body.style.overflow=''; } });
+  </script>
+</body>
+</html>
